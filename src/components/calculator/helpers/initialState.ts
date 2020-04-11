@@ -13,7 +13,7 @@ export const defaultStore = {
   calculated: false,
   keys: MapKeys,
   total: 0,
-  reset: false
+  reset: false,
 };
 
 export type DefaultStoreType = typeof defaultStore;

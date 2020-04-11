@@ -18,30 +18,20 @@ export const updateValues = (state: DefaultStoreType, newOperation: string) => {
     return { total: value, history };
   }
 
-  if (newOperation === '=') {
-
-    console.log()
+  switch (lastOperation) {
+    case '+':
+      total = state.total + value;
+      break;
+    case '-':
+      total = state.total - value;
+      break;
+    case '*':
+      total = state.total * value;
+      break;
+    case '/':
+      total = state.total / value;
+      break;
   }
-
- 
-
-
- 
-    switch (lastOperation) {
-      case '+':
-        total = state.total + value;
-        break;
-      case '-':
-        total = state.total - value;
-        break;
-      case '*':
-        total = state.total * value;
-        break;
-      case '/':
-        total = state.total / value;
-        break;
-    }
-  
 
   history.push(last);
 

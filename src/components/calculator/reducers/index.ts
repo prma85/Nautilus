@@ -23,9 +23,15 @@ export const calculatorReducer = (state: DefaultStoreType, action: IAction<Actio
       }
 
       return { ...state, calculated: calculated, displayValue: displayValue, reset: reset, history: history };
+    case Action.DeleteLast: {
+      let slicedDisplay = state.displayValue.slice(0, -1);
+
+      return { ...state, displayValue: slicedDisplay || '0' };
+    }
     case Action.Operation:
       if (state.calculated) {
-        return state
+        let tempHistoryDisplay = state.historyDisplay.slice();
+        if (tempHistoryDisplay[tempHistoryDisplay.length - 1]) return state;
       }
       let operation = updateValues(state, action.payload);
       return {
@@ -40,12 +46,16 @@ export const calculatorReducer = (state: DefaultStoreType, action: IAction<Actio
     case Action.Clean:
       const historyClean = [...state.history];
       if (historyClean[historyClean.length - 1].length > 0) {
-        historyClean.pop();
+        if (state.reset) {
+          historyClean.push([]);
+        } else {
+          historyClean[historyClean.length - 1] = [];
+        }
       }
       return { ...state, history: historyClean, displayValue: '0' };
     case Action.Total:
       if (state.reset) {
-        return state
+        return state;
       }
 
       let total = updateValues(state, '=');
@@ -64,7 +74,7 @@ export const calculatorReducer = (state: DefaultStoreType, action: IAction<Actio
             operations: totalHistory[totalHistory.length - 1].join(' '),
             total: total.total,
           },
-        ]
+        ],
       };
   }
 };

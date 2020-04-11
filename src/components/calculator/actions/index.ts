@@ -3,7 +3,6 @@ export enum Action {
   Percentace,
   Clean,
   Total,
-  Number
+  Number,
+  DeleteLast,
 }
-
-

@@ -17,12 +17,14 @@ export const Button = (props: ButtonProps) => {
     e.preventDefault();
     if (props.value.match(/^[0-9]+$/) || props.value === '.') {
       dispatch({ type: Action.Number, payload: props.value });
-    } else if ((props.value === 'CE')) {
+    } else if (props.value === 'CE') {
       dispatch({ type: Action.Clean, payload: props.value });
-    } else if ((props.value === '%')) {
+    } else if (props.value === '%') {
       dispatch({ type: Action.Percentace, payload: props.value });
-    } else if ((props.value === '=')) {
+    } else if (props.value === '=') {
       dispatch({ type: Action.Total, payload: props.value });
+    } else if (props.value === '«') {
+      dispatch({ type: Action.DeleteLast, payload: props.value });
     } else {
       dispatch({ type: Action.Operation, payload: props.value });
     }

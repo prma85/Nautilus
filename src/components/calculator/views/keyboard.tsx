@@ -9,7 +9,8 @@ export const Keyboard = () => {
   return (
     <>
       <Row className='no-gutters'>
-        {renderButtton('CE', 2, true)}
+        {renderButtton('CE', 2)}
+        {renderButtton('«', 2)}
         {renderButtton('%', 2)}
         {renderButtton('/', 1)}
       </Row>
