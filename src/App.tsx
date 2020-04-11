@@ -1,13 +1,13 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import Calculator from "./components/calculator";
+import CalculatorApp from "./components/calculator";
 
 function App() {
   return (
     <Container>
-      <Row>
-        <Col style={{ textAlign:"center" }}>
-          <Calculator />
+      <Row className="justify-content-lg-center">
+        <Col md={8} lg={6}>
+          <CalculatorApp />
         </Col>
       </Row>
     </Container>

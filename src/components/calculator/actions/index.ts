@@ -1,1 +1,9 @@
-export default {}
+export enum Action {
+  Operation,
+  Percentace,
+  Clean,
+  Total,
+  Number
+}
+
+
